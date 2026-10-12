@@ -1,0 +1,61 @@
+.proto-banner{background:#FEF3C7;color:#92400E;text-align:center;padding:3px 8px;font-size:12.5px;font-weight:600;border-bottom:1px solid #FDE68A;font-family:"Rubik",sans-serif}
+.rb-new{display:inline-block;background:rgba(158,29,21,.08);color:#9E1D15;border:1px solid rgba(158,29,21,.22);border-radius:20px;font-size:10.5px;font-weight:700;padding:0 7px;line-height:17px}
+/* chip badge */
+.header_role_chip{position:relative}
+.rb-chip-badge{display:inline-flex;align-items:center;gap:4px;background:#DC2626;color:#fff;border-radius:10px;font-size:11px;font-weight:700;min-width:20px;height:18px;padding:0 6px;margin-inline-start:6px;box-shadow:0 0 0 2px #312E2E}
+.rb-chip-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff}
+.rb-chip-badge.bump{animation:rbbump .6s}
+@keyframes rbbump{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
+/* dropdown */
+.header_role_dropdown{min-width:340px!important}
+.rb-dd-head{display:flex;justify-content:space-between;align-items:center;padding:6px 8px 8px;font-size:12.5px;color:#64748B;border-bottom:1px solid #f1f1f1;margin-bottom:6px}
+.header_role_dropdown_list li.rb-role{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.rb-role-name{display:flex;flex-direction:column;gap:1px}
+.rb-role-name small{font-size:11px;color:#94A3B8;font-weight:400}
+.rb-current{font-size:10.5px;font-weight:700;color:#9E1D15;background:#fff;border:1px solid rgba(158,29,21,.3);border-radius:10px;padding:0 6px;margin-inline-start:6px}
+.rb-counts{display:flex;gap:4px;flex:none}
+.rb-cnt{min-width:26px;height:22px;border-radius:11px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 7px;font-variant-numeric:tabular-nums}
+.rb-cnt.unread{background:#DC2626;color:#fff}
+.rb-cnt.open{background:#F1F5F9;color:#334155;border:1px solid #E2E8F0}
+.rb-cnt.zero{opacity:.35}
+.rb-cnt.bump{animation:rbbump .6s}
+.rb-dd-legend{display:flex;gap:14px;font-size:11.5px;color:#64748B;padding:8px 8px 2px;border-top:1px solid #f1f1f1;margin-top:6px}
+.rb-dd-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-inline-end:4px;vertical-align:middle}
+.rb-dot-unread{background:#DC2626}.rb-dot-open{background:#CBD5E1}
+/* strip under org tabs */
+.rb-role-strip{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#FFFBFA;border:1px dashed rgba(158,29,21,.3);border-radius:8px;padding:8px 12px;margin:0 0 12px;font-size:13px}
+.rb-role-strip[hidden]{display:none}
+.rb-role-strip button{border:1px solid #E2E8F0;background:#fff;border-radius:16px;padding:3px 10px;font-size:12.5px}
+.rb-role-strip button:hover{border-color:#9E1D15;color:#9E1D15}
+.rb-role-strip button b{color:#DC2626}
+/* rows */
+tr.rb-unread td{font-weight:600}
+tr.rb-flash td{animation:rbflash 1.5s}
+@keyframes rbflash{0%{background:#FDE68A}100%{background:transparent}}
+.rb-empty{padding:30px;display:flex;flex-direction:column;align-items:center;gap:8px;color:#64748B}
+.rb-empty[hidden]{display:none}
+/* notifications */
+.rb-role-tag{display:inline-flex;align-items:center;gap:4px;background:#F2F3FB;color:#025ED6;border:1px solid #DBE3FB;border-radius:20px;padding:1px 8px;font-size:11.5px;font-weight:600}
+.rb-role-tag.other{background:#FFF7ED;color:#C2410C;border-color:#FED7AA}
+.rb-switch-offer{margin-top:8px;background:#FFF7ED;border:1px solid #FED7AA;border-radius:8px;padding:8px;font-size:12.5px;color:#7C2D12;display:flex;flex-direction:column;gap:6px}
+.rb-switch-offer button{align-self:flex-start;background:#9E1D15;color:#fff;border:0;border-radius:8px;padding:5px 12px;font-size:12.5px;font-weight:600}
+.rb-ta-role{font-size:12.5px;color:#64748B;margin-top:6px}
+/* alerts */
+.rb-alerts{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:2000;display:flex;flex-direction:column;gap:8px;width:min(480px,92vw)}
+.rb-alerts .alert{margin:0;box-shadow:0 10px 25px -5px rgba(15,23,42,.15);font-size:13.5px;display:flex;justify-content:space-between;align-items:center;gap:10px;animation:rbin .25s}
+.rb-alerts .alert button{background:#9E1D15;color:#fff;border:0;border-radius:8px;padding:4px 10px;font-size:12.5px;white-space:nowrap}
+@keyframes rbin{from{opacity:0;transform:translateY(8px)}}
+/* doc */
+.rb-docbox{padding:16px 20px}
+.rb-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 18px;font-size:13px;margin-bottom:14px}
+.rb-meta span{display:block;color:#64748B;font-size:12px}
+.rb-paper{border:1px solid #E2E8F0;border-radius:8px;padding:26px;min-height:220px;line-height:2}
+/* demo */
+.rb-demo{position:fixed;bottom:14px;left:14px;z-index:1500;font-size:12.5px;font-family:"Rubik",sans-serif}
+.rb-demo-toggle{background:#1F1C1C;color:#fff;border:0;border-radius:15px;padding:6px 12px;opacity:.85}
+.rb-demo-body{position:absolute;bottom:40px;left:0;background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:10px;width:250px;display:flex;flex-direction:column;gap:7px;box-shadow:0 10px 25px -5px rgba(15,23,42,.15)}
+.rb-demo-body[hidden]{display:none}
+.rb-demo-body button,.rb-demo-body select{border:1px solid #E2E8F0;background:#fff;border-radius:8px;padding:5px 8px;font-size:12.5px}
+.rb-demo-body .pri{background:#9E1D15;color:#fff;border-color:#9E1D15}.rb-demo-body .danger{color:#B42318}
+html,body{overflow-x:hidden}
+@media (max-width:600px){.header_name_chip,.header_logo_center,.header_title_area p{display:none!important}.rb-meta{grid-template-columns:1fr 1fr}}

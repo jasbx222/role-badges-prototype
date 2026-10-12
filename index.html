@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>المراسلات — نموذج أولي: عدّادات الأدوار</title>
+<link rel="stylesheet" href="lib/bootstrap5/bootstrap.min.css" />
+<link rel="stylesheet" href="css/style.css" /><link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/items.css" /><link rel="stylesheet" href="css/table.css" /><link rel="stylesheet" href="css/nav.css" />
+<link rel="stylesheet" href="css/notifications.css" /><link rel="stylesheet" href="css/sidebar.css" /><link rel="stylesheet" href="css/mainPage.css" />
+<link rel="stylesheet" href="css/shared/referencedDocumentDetails.css" /><link rel="stylesheet" href="css/shared/displayDocumentSplit.css" />
+<link rel="stylesheet" href="roles.css" />
+</head>
+<body class="min-vh-100">
+<div class="proto-banner">نموذج أولي — بيانات تجريبية</div>
+<header><div id="nav" class="nav"><div class="content_header_tool">
+ <div class="header_profile_cluster">
+  <button type="button" id="NotificationBellTrigger" class="header_bell_box" title="الإشعارات"><img class="header_bell_icon" src="img/bell_icon_white.svg" alt="" /><span id="NotificationBellBadge" class="header_bell_badge" hidden>0</span></button>
+  <div class="header_role_chip_wrap">
+   <button type="button" class="header_role_chip" id="ActiveRoleChip" aria-haspopup="listbox" aria-expanded="false">
+    <img src="img/arrow_bottom_icon.svg" class="header_role_chip_arrow" alt="" />
+    <span id="ActiveRoleLabel"></span>
+    <b class="rb-chip-badge" id="RoleChipBadge" hidden title="كتب بانتظارك بأدوار أخرى"></b>
+   </button>
+   <div class="header_role_dropdown" id="RoleSwitcherDropdown" hidden>
+    <div class="rb-dd-head"><span>تبديل الدور</span><span class="rb-new">جديد: عدّاد لكل دور</span></div>
+    <ul class="header_role_dropdown_list" id="RoleSwitcherList" role="listbox"></ul>
+    <div class="header_role_dropdown_committees" id="RoleSwitcherCommittees" hidden>
+     <label>اللجان</label>
+     <div class="header_committee_select_wrap"><select id="RoleSwitcherCommitteeSelect" class="header_committee_select_button"></select></div>
+     <button type="button" id="RoleSwitcherConfirm" class="header_role_dropdown_confirm">موافق</button>
+    </div>
+    <div class="rb-dd-legend"><span><i class="rb-dot-unread"></i>غير مقروء</span><span><i class="rb-dot-open"></i>غير مكتمل</span></div>
+   </div>
+  </div>
+  <div class="header_name_chip"><p id="HeaderUserName">م. حيدر سلمان</p><span class="header_name_chip_avatar"><img src="img/profile_icon_white.svg" alt="" /></span></div>
+ </div>
+ <div class="Logo_small_icon icon header_logo_center"><img src="img/Logo_Integ.png" width="20" alt="" /></div>
+ <div class="header_title_area"><div class="space-s1"><div class="d-flex"><p> المراسلات  -  الواجهة الرئيسية </p>
+  <a class="contentBox-report"><button class="navbar-toggle-btn" title="القائمة"><svg width="25" height="19" viewBox="0 0 25 19"><rect width="24" height="2" rx="1" fill="#8F8F8F"/><rect y="8.2" width="16" height="2" rx="1" fill="#8F8F8F"/><rect y="16.5" width="24" height="2" rx="1" fill="#8F8F8F"/></svg></button></a></div></div></div>
+</div></div></header>
+
+<div class="pg-wrapper min-vh-100">
+ <div class="main_content_box main-page-shell">
+  <section class="correspondence-card direction_rtl">
+   <div class="correspondence-filter-card"><div class="correspondence-filter-body"><div class="correspondence-filter-grid">
+    <div class="correspondence-field correspondence-field-wide"><label>بحث</label><div class="input_content_icon_box"><input id="Search" class="input_elem input_style input_height_style border_radius_actions_1" type="text" placeholder="ابحث برقم الكتاب أو الموضوع أو الجهة المرسلة..." /><img class="icon_elem" src="img/search_icon.svg" alt="" /></div></div>
+    <div class="correspondence-field"><label>من تاريخ</label><input class="input_elem input_style input_height_style border_radius_actions_1" type="date" /></div>
+    <div class="correspondence-field"><label>إلى تاريخ</label><input class="input_elem input_style input_height_style border_radius_actions_1" type="date" /></div>
+    <div class="correspondence-field"><label>نوع الكتاب</label><select class="input_elem input_style input_height_style border_radius_actions_1"><option>كل الأنواع</option><option>صادر</option><option>وارد</option><option>مذكرة داخلية</option></select></div>
+    <div class="correspondence-filter-actions"><button class="correspondence-apply-filters-btn font_size_2m_button border_radius_actions_1" type="button"><img src="img/apply_filters_icon.svg" alt="" /> تطبيق الفلاتر</button><button class="correspondence-reset-filters-btn border_radius_actions_1" type="button"><img src="img/reset_filters_icon.svg" alt="" /></button></div>
+   </div></div></div>
+   <div class="org-category-bar"><div class="org-category-tabs" id="OrgTabs"></div></div>
+   <div class="rb-role-strip" id="RoleStrip"></div>
+   <div class="correspondence-table-shell position-relative"><div class="correspondence-table-scroll">
+    <table class="table_style table_dir_rtl correspondence-data-table">
+     <thead><tr><th>رقم الكتاب</th><th>تاريخ الكتاب</th><th>تاريخ آخر إجابة</th><th>نوع الكتاب</th><th>الأولوية</th><th>الجهة المرسلة للكتاب</th><th>موضوع الكتاب</th><th>الهامش</th><th>الحالة</th><th>عرض الكتاب</th><th>الإجراءات</th></tr></thead>
+     <tbody id="InboxBody" class="text_size_3x"></tbody>
+    </table></div>
+    <div class="rb-empty" id="Empty" hidden><img src="img/no_record_icon.svg" alt="" /><div>لا توجد نتائج لهذا الدور</div></div>
+   </div>
+  </section>
+ </div>
+</div>
+
+<div id="NotificationPanelRoot" class="notification-panel-root" hidden>
+ <div class="notification-panel-backdrop" data-close-notif></div>
+ <aside class="notification-panel" role="dialog"><div id="NotifHeader"></div><div class="notification-panel__body"><div id="NotifList"></div></div></aside>
+</div>
+
+<div class="modal modal-part fade" id="DisplayDocumentsModal" tabindex="-1" aria-hidden="true">
+ <div class="modal-dialog modal-lg modal-dialog-centered right_left_modal_third_part session_modal-dialog customer_deatils_modal modal_shadow doc-split-dialog"><div class="modal-content right_left_modal session_modal-content doc-split-content">
+  <div class="modal-header modal_header_VA_style no_border_radius doc-split-header"><div class="row w_100"><div class="col-lg" data-bs-dismiss="modal" style="cursor:pointer"><img width="32" src="img/close_icon.svg" alt=""></div><div class="col-lg text_right mt-auto mb-auto p-0 modal_title"><b>عرض المستند</b></div></div></div>
+  <div class="modal-body overflow-auto p-0" id="DisplayBody"></div>
+ </div></div>
+</div>
+
+<div class="modal fade" id="TakeActionModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+ <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+  <div class="modal-header take-action-header"><div class="take-action-header-title-box"><div class="take-action-header-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><h5 class="take-action-header-title">اتخاذ إجراء</h5><p class="take-action-header-subtitle" id="TaSub">تحديد الإجراء المطلوب وإرساله إلى الجهة المعنية</p></div></div>
+   <div class="take-action-close-btn" data-bs-dismiss="modal"><img width="20" src="img/close_icon.svg" alt=""></div></div>
+  <div class="modal-body TakeActionModal_body">
+   <div class="row"><div class="take-action-field-group"><label class="take-action-label">إرسال إلى</label><select id="TaProducer" class="input_elem input_style input_height_style border_radius_actions_1 w-100 take-action-select"><option value="">— بدون إرسال —</option><option value="up">إرسال إلى المدير العام</option><option value="down">إرسال إلى الموظفين</option></select></div></div>
+   <div class="row g-2"><div class="col-6"><div class="take-action-field-group"><label class="take-action-label">الحالة</label><select id="TaStatus" class="input_elem input_style input_height_style border_radius_actions_1 w-100 take-action-select"><option>مكتمل</option><option>قيد الإجراء</option></select></div></div>
+    <div class="col-6"><div class="take-action-field-group"><label class="take-action-label">المستند</label><select class="input_elem input_style input_height_style border_radius_actions_1 w-100 take-action-select"><option>بدون مستند</option></select></div></div></div>
+   <div class="row"><div class="take-action-field-group"><label class="take-action-label">الهامش</label><textarea id="TaMargin" class="input_elem input_style border_radius_actions_1 w-100 resize_none_description take-action-textarea" placeholder="أدخل نص الهامش أو الملاحظات هنا..."></textarea></div></div>
+   <div class="rb-ta-role" id="TaRole"></div>
+  </div>
+  <div class="modal-footer take-action-footer"><div class="row w-100 g-2 m-0">
+   <div class="col-8 p-1"><button id="TaSubmit" type="button" class="button_style button_color_danger font_size_2m_button border_radius_actions_1 w-100 take-action-btn-submit text-white"><span class="text-white">تأكيد الإجراء</span></button></div>
+   <div class="col-4 p-1"><button type="button" class="button_style font_size_2m_button border_radius_actions_1 w-100 take-action-btn-cancel" data-bs-dismiss="modal">إلغاء</button></div></div></div>
+ </div></div>
+</div>
+
+<div class="rb-alerts" id="Alerts"></div>
+<div class="rb-demo"><button id="DemoToggle" class="rb-demo-toggle" title="أدوات النموذج الأولي">⚙ تجربة</button>
+ <div class="rb-demo-body" id="DemoBody" hidden>
+  <b>محاكاة وصول كتاب جديد</b>
+  <select id="DemoRole"></select>
+  <button id="DemoSend" class="pri">وصول كتاب</button>
+  <button id="DemoLogin">محاكاة تسجيل الدخول</button>
+  <button id="Reset" class="danger">إعادة ضبط البيانات</button>
+ </div></div>
+<script src="lib/bootstrap5/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+</body></html>
