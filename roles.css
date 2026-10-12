@@ -1,61 +1,103 @@
-.proto-banner{background:#FEF3C7;color:#92400E;text-align:center;padding:3px 8px;font-size:12.5px;font-weight:600;border-bottom:1px solid #FDE68A;font-family:"Rubik",sans-serif}
-.rb-new{display:inline-block;background:rgba(158,29,21,.08);color:#9E1D15;border:1px solid rgba(158,29,21,.22);border-radius:20px;font-size:10.5px;font-weight:700;padding:0 7px;line-height:17px}
-/* chip badge */
-.header_role_chip{position:relative}
-.rb-chip-badge{display:inline-flex;align-items:center;gap:4px;background:#DC2626;color:#fff;border-radius:10px;font-size:11px;font-weight:700;min-width:20px;height:18px;padding:0 6px;margin-inline-start:6px;box-shadow:0 0 0 2px #312E2E}
-.rb-chip-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff}
+/* ASITS role-badges prototype — restyled (CSS only; app.js hooks untouched) */
+:root{--rb-red:#9E1D15;--rb-red-lt:#FFE8E8;--rb-tx:#1E293B;--rb-mu:#64748B;--rb-li:#94A3B8;--rb-bd:#E2E8F0;--rb-sub:#F1F5F9;--rb-bg:#F8FAFC;--rb-danger:#DC2626;--rb-sh:0 1px 3px rgba(0,0,0,.05);--rb-shl:0 12px 32px -8px rgba(15,23,42,.18),0 2px 6px rgba(15,23,42,.06)}
+body{font-family:"Rubik",sans-serif;background:var(--rb-bg)}
+.proto-banner{background:#1F1C1C;color:#A3A3A3;text-align:center;padding:2px 8px;font-size:11px;font-weight:400;letter-spacing:.2px;border-bottom:1px solid #2B2828}
+.rb-new{display:none!important}
+
+/* ---------- top bar: role chip + badge ---------- */
+.header_role_chip{position:relative;gap:8px}
+.rb-chip-badge{display:inline-flex;align-items:center;justify-content:center;background:var(--rb-danger);color:#fff;border-radius:9px;font:600 11px/1 "Rubik";min-width:18px;height:18px;padding:0 5px;margin-inline-start:2px;box-shadow:none;font-variant-numeric:tabular-nums}
+.rb-chip-badge::before{display:none}
+.rb-chip-badge[hidden]{display:none}
 .rb-chip-badge.bump{animation:rbbump .6s}
-@keyframes rbbump{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
-/* dropdown */
-.header_role_dropdown{min-width:340px!important}
-.rb-dd-head{display:flex;justify-content:space-between;align-items:center;padding:6px 8px 8px;font-size:12.5px;color:#64748B;border-bottom:1px solid #f1f1f1;margin-bottom:6px}
-.header_role_dropdown_list li.rb-role{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.rb-role-name{display:flex;flex-direction:column;gap:1px}
-.rb-role-name small{font-size:11px;color:#94A3B8;font-weight:400}
-.rb-current{font-size:10.5px;font-weight:700;color:#9E1D15;background:#fff;border:1px solid rgba(158,29,21,.3);border-radius:10px;padding:0 6px;margin-inline-start:6px}
-.rb-counts{display:flex;gap:4px;flex:none}
-.rb-cnt{min-width:26px;height:22px;border-radius:11px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 7px;font-variant-numeric:tabular-nums}
-.rb-cnt.unread{background:#DC2626;color:#fff}
-.rb-cnt.open{background:#F1F5F9;color:#334155;border:1px solid #E2E8F0}
-.rb-cnt.zero{opacity:.35}
+@keyframes rbbump{0%{transform:scale(1)}40%{transform:scale(1.3)}100%{transform:scale(1)}}
+.header_bell_badge{background:var(--rb-danger)!important;font:600 10px/16px "Rubik"!important;min-width:16px!important;height:16px!important;box-shadow:0 0 0 2px #1F1C1C!important}
+
+/* ---------- role switcher ---------- */
+.header_role_dropdown{min-width:340px!important;padding:6px!important;border-radius:12px!important;box-shadow:var(--rb-shl)!important;border:1px solid rgba(15,23,42,.06)}
+.rb-dd-head{display:flex;align-items:center;padding:8px 10px 6px;font:500 12px "Rubik";color:var(--rb-li);margin:0}
+.header_role_dropdown_list li.rb-role{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 12px;border-radius:8px;color:var(--rb-tx);font-weight:500;position:relative}
+.header_role_dropdown_list li.rb-role:hover{background:var(--rb-bg)}
+.header_role_dropdown_list li.rb-role.active{background:var(--rb-red-lt);color:var(--rb-tx)}
+.header_role_dropdown_list li.rb-role.active::before{content:"";position:absolute;right:0;top:10px;bottom:10px;width:3px;border-radius:3px;background:var(--rb-red)}
+.rb-role-name{display:flex;flex-direction:column;gap:2px;min-width:0;font-size:14px}
+.rb-role-name small{font-size:12px;color:var(--rb-mu);font-weight:400;line-height:1.5}
+.rb-current{font:500 11px "Rubik";color:var(--rb-red);background:transparent;border:0;padding:0;margin-inline-start:8px}
+.rb-current::before{content:"• "}
+.rb-counts{display:flex;gap:6px;flex:none;align-items:center}
+.rb-cnt{min-width:22px;height:22px;border-radius:11px;font:600 12px/1 "Rubik";display:inline-flex;align-items:center;justify-content:center;padding:0 7px;font-variant-numeric:tabular-nums}
+.rb-cnt.unread{background:var(--rb-danger);color:#fff}
+.rb-cnt.open{background:transparent;color:var(--rb-mu);border:1px solid var(--rb-bd)}
+.rb-cnt.zero{visibility:hidden}
 .rb-cnt.bump{animation:rbbump .6s}
-.rb-dd-legend{display:flex;gap:14px;font-size:11.5px;color:#64748B;padding:8px 8px 2px;border-top:1px solid #f1f1f1;margin-top:6px}
-.rb-dd-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-inline-end:4px;vertical-align:middle}
-.rb-dot-unread{background:#DC2626}.rb-dot-open{background:#CBD5E1}
-/* strip under org tabs */
-.rb-role-strip{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#FFFBFA;border:1px dashed rgba(158,29,21,.3);border-radius:8px;padding:8px 12px;margin:0 0 12px;font-size:13px}
+.rb-dd-legend{display:flex;gap:16px;font-size:11px;color:var(--rb-li);padding:8px 12px 6px;border-top:1px solid var(--rb-sub);margin-top:4px}
+.rb-dd-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-inline-end:6px;vertical-align:middle}
+.rb-dot-unread{background:var(--rb-danger)}.rb-dot-open{background:#fff;box-shadow:inset 0 0 0 1px #CBD5E1}
+
+/* ---------- strip: other roles ---------- */
+.rb-role-strip{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:transparent;border:0;border-radius:0;padding:4px 2px 14px;margin:0;font-size:13px;color:var(--rb-mu)}
 .rb-role-strip[hidden]{display:none}
-.rb-role-strip button{border:1px solid #E2E8F0;background:#fff;border-radius:16px;padding:3px 10px;font-size:12.5px}
-.rb-role-strip button:hover{border-color:#9E1D15;color:#9E1D15}
-.rb-role-strip button b{color:#DC2626}
-/* rows */
+.rb-role-strip button{border:1px solid var(--rb-bd);background:#fff;border-radius:8px;padding:4px 10px;font:400 12.5px "Rubik";color:var(--rb-tx);box-shadow:var(--rb-sh);transition:border-color .15s,color .15s}
+.rb-role-strip button:hover{border-color:rgba(158,29,21,.35);color:var(--rb-red)}
+.rb-role-strip button b{color:var(--rb-danger);font-weight:600}
+
+/* ---------- rows ---------- */
 tr.rb-unread td{font-weight:600}
 tr.rb-flash td{animation:rbflash 1.5s}
-@keyframes rbflash{0%{background:#FDE68A}100%{background:transparent}}
-.rb-empty{padding:30px;display:flex;flex-direction:column;align-items:center;gap:8px;color:#64748B}
+@keyframes rbflash{0%{background:#FFE8E8}100%{background:transparent}}
+.rb-empty{padding:40px;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--rb-mu)}
 .rb-empty[hidden]{display:none}
-/* notifications */
-.rb-role-tag{display:inline-flex;align-items:center;gap:4px;background:#F2F3FB;color:#025ED6;border:1px solid #DBE3FB;border-radius:20px;padding:1px 8px;font-size:11.5px;font-weight:600}
-.rb-role-tag.other{background:#FFF7ED;color:#C2410C;border-color:#FED7AA}
-.rb-switch-offer{margin-top:8px;background:#FFF7ED;border:1px solid #FED7AA;border-radius:8px;padding:8px;font-size:12.5px;color:#7C2D12;display:flex;flex-direction:column;gap:6px}
-.rb-switch-offer button{align-self:flex-start;background:#9E1D15;color:#fff;border:0;border-radius:8px;padding:5px 12px;font-size:12.5px;font-weight:600}
-.rb-ta-role{font-size:12.5px;color:#64748B;margin-top:6px}
-/* alerts */
-.rb-alerts{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:2000;display:flex;flex-direction:column;gap:8px;width:min(480px,92vw)}
-.rb-alerts .alert{margin:0;box-shadow:0 10px 25px -5px rgba(15,23,42,.15);font-size:13.5px;display:flex;justify-content:space-between;align-items:center;gap:10px;animation:rbin .25s}
-.rb-alerts .alert button{background:#9E1D15;color:#fff;border:0;border-radius:8px;padding:4px 10px;font-size:12.5px;white-space:nowrap}
+
+/* ---------- notifications ---------- */
+.notification-panel__body .notification-list{gap:0!important}
+.notification-panel .notification-card{border:0!important;border-bottom:1px solid var(--rb-sub)!important;border-radius:0!important;box-shadow:none!important;background:#fff!important;padding:16px 20px!important;transform:none!important}
+.notification-panel .notification-card:hover{background:var(--rb-bg)!important}
+.notification-panel .notification-card--unread{background:#fff!important;position:relative}
+.notification-panel .notification-card--unread::after{content:"";position:absolute;top:22px;left:20px;width:8px;height:8px;border-radius:50%;background:var(--rb-danger)}
+.notification-card__unread-badge{display:none!important}
+.notification-card__thumbnail{width:36px!important;height:36px!important;border-radius:8px!important;background:var(--rb-sub)!important;border:0!important}
+.notification-card__thumbnail img{width:18px!important;height:18px!important;opacity:.6!important;filter:grayscale(1)}
+.notification-card__type{border:0!important;background:transparent!important;padding:0!important;color:var(--rb-li)!important;font-weight:400!important}
+.notification-card__title{font:600 14px/1.5 "Rubik"!important;color:var(--rb-tx)!important;margin:2px 0 6px!important}
+.notification-card__details{gap:14px!important}
+.notification-card__detail-label{color:var(--rb-li)!important;font-weight:400!important}
+.notification-card__detail-value{color:var(--rb-mu)!important;font-weight:500!important}
+.rb-role-tag{display:inline-flex;align-items:center;gap:6px;background:var(--rb-sub);color:#334155;border:0;border-radius:6px;padding:2px 8px;font:500 11.5px/1.6 "Rubik"}
+.rb-role-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:#94A3B8}
+.rb-role-tag.other{background:#FFF7ED;color:#B45309}
+.rb-role-tag.other::before{background:#F59E0B}
+.rb-switch-offer{margin-top:10px;background:var(--rb-bg);border:0;border-radius:10px;padding:12px;font-size:12.5px;color:var(--rb-tx);display:flex;flex-direction:column;gap:10px;line-height:1.7}
+.rb-switch-offer button{align-self:flex-start;background:var(--rb-red);color:#fff;border:0;border-radius:8px;padding:6px 12px;font:500 12.5px "Rubik"}
+.rb-ta-role{font-size:12.5px;color:var(--rb-mu);margin-top:8px}
+
+/* ---------- toasts / login message ---------- */
+.rb-alerts{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:2000;display:flex;flex-direction:column;gap:8px;width:min(520px,92vw)}
+.rb-alerts .alert{margin:0;background:#fff!important;color:var(--rb-tx)!important;border:1px solid rgba(15,23,42,.06)!important;border-radius:12px!important;box-shadow:var(--rb-shl);padding:14px 16px 14px 14px;font:400 13.5px/1.7 "Rubik";display:flex;justify-content:space-between;align-items:center;gap:16px;animation:rbin .25s;position:relative;padding-right:40px}
+.rb-alerts .alert::before{content:"";position:absolute;right:16px;top:50%;margin-top:-5px;width:10px;height:10px;border-radius:50%;background:#2563EB;box-shadow:0 0 0 4px rgba(37,99,235,.12)}
+.rb-alerts .alert-warning::before{background:#F59E0B;box-shadow:0 0 0 4px rgba(245,158,11,.15)}
+.rb-alerts .alert-success::before{background:#059669;box-shadow:0 0 0 4px rgba(5,150,105,.12)}
+.rb-alerts .alert b{font-weight:600}
+.rb-alerts .alert button{background:var(--rb-red);color:#fff;border:0;border-radius:8px;padding:6px 12px;font:500 12.5px "Rubik";white-space:nowrap;flex:none}
 @keyframes rbin{from{opacity:0;transform:translateY(8px)}}
-/* doc */
-.rb-docbox{padding:16px 20px}
-.rb-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 18px;font-size:13px;margin-bottom:14px}
-.rb-meta span{display:block;color:#64748B;font-size:12px}
-.rb-paper{border:1px solid #E2E8F0;border-radius:8px;padding:26px;min-height:220px;line-height:2}
-/* demo */
-.rb-demo{position:fixed;bottom:14px;left:14px;z-index:1500;font-size:12.5px;font-family:"Rubik",sans-serif}
-.rb-demo-toggle{background:#1F1C1C;color:#fff;border:0;border-radius:15px;padding:6px 12px;opacity:.85}
-.rb-demo-body{position:absolute;bottom:40px;left:0;background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:10px;width:250px;display:flex;flex-direction:column;gap:7px;box-shadow:0 10px 25px -5px rgba(15,23,42,.15)}
+
+/* ---------- doc ---------- */
+.rb-docbox{padding:20px 24px}
+.rb-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 20px;font-size:13.5px;margin-bottom:16px;color:var(--rb-tx)}
+.rb-meta span{display:block;color:var(--rb-mu);font-size:12px}
+.rb-paper{border:1px solid var(--rb-bd);border-radius:12px;padding:28px;min-height:220px;line-height:2;background:#fff}
+
+/* ---------- demo tools: quiet ---------- */
+.rb-demo{position:fixed;bottom:16px;left:16px;z-index:1500;font-size:12.5px;font-family:"Rubik",sans-serif}
+.rb-demo-toggle{background:transparent;color:var(--rb-li);border:1px dashed #CBD5E1;border-radius:8px;padding:3px 10px;font:400 11.5px "Rubik";opacity:.7;transition:opacity .15s,color .15s}
+.rb-demo-toggle:hover{opacity:1;color:var(--rb-mu)}
+.rb-demo-body{position:absolute;bottom:36px;left:0;background:#fff;border:1px solid var(--rb-bd);border-radius:12px;padding:12px;width:240px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--rb-shl)}
+.rb-demo-body b{font-weight:500;color:var(--rb-mu);font-size:12px}
 .rb-demo-body[hidden]{display:none}
-.rb-demo-body button,.rb-demo-body select{border:1px solid #E2E8F0;background:#fff;border-radius:8px;padding:5px 8px;font-size:12.5px}
-.rb-demo-body .pri{background:#9E1D15;color:#fff;border-color:#9E1D15}.rb-demo-body .danger{color:#B42318}
+.rb-demo-body button,.rb-demo-body select{border:1px solid var(--rb-bd);background:#fff;border-radius:8px;padding:6px 10px;font:400 12.5px "Rubik";color:var(--rb-tx)}
+.rb-demo-body .pri{background:var(--rb-tx);color:#fff;border-color:var(--rb-tx)}.rb-demo-body .danger{color:#B42318;border-color:transparent}
 html,body{overflow-x:hidden}
 @media (max-width:600px){.header_name_chip,.header_logo_center,.header_title_area p{display:none!important}.rb-meta{grid-template-columns:1fr 1fr}}
+.header_role_dropdown_list li.rb-role.has-select{border:0!important;box-shadow:none!important;background:transparent;margin:0!important}
+.header_role_dropdown_list li.rb-role.has-select:hover{background:var(--rb-bg)}
+.header_role_dropdown_list li.rb-role.has-select.active{background:var(--rb-red-lt)}
+.header_role_dropdown_list li.rb-role+li.rb-role{margin-top:2px!important}
